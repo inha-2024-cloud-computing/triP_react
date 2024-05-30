@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Wavve";
+  font-weight: normal;
+  src: url("./fonts\WavvePADO-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Hak";
+  font-weight: Normal;
+  src: url("./fonts\HakgyoansimWoojuR.ttf") format("truetype");
+}
+
+* {
+  font-family: "Hak";
+}
