@@ -9,42 +9,38 @@ import {
 } from "react-router-dom";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
-import Login, { action, action as loginAction } from "./pages/Login";
-import Signup, { action as signupAction } from "./pages/Signup";
 import MenuUpload from "./pages/MenuUpload";
 import MenuPage from "./pages/MenuPage";
-import LocationPage from "./pages/LocationPage";
+import { checkAuthLoader, getAuthToken, tokenLoader } from "./util/auth";
+import ChatPage from "./pages/ChatPage";
+import TokenExchange from "./components/TokenExchange";
+import Error from "./pages/Error";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     id: "root",
+    loader: getAuthToken,
+    errorElement: <Error />,
     children: [
       {
         index: true,
         element: <Home />,
       },
       {
-        path: "login",
-        element: <Login />,
-        action: loginAction,
-      },
-      {
-        path: "signup",
-        element: <Signup />,
-        action: signupAction,
-      },
-      {
         path: "menupan",
         element: <MenuUpload />,
+        loader: checkAuthLoader,
+      },
+
+      {
+        path: "chat",
+        element: <ChatPage />,
+        loader: checkAuthLoader,
       },
       {
-        path: "dummy",
-        element: <MenuPage />,
-      },
-      {
-        path: "where",
-        element: <LocationPage />,
+        path: "token-exchange",
+        element: <TokenExchange />,
       },
     ],
   },

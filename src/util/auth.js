@@ -9,8 +9,7 @@ export function getTokenDuration() {
 }
 
 export function getAuthToken() {
-  const token = localStorage.getItem("token");
-  console.log(token);
+  const token = localStorage.getItem("accessToken");
 
   if (!token) {
     return null;
@@ -32,7 +31,7 @@ export function checkAuthLoader() {
   const token = getAuthToken();
   if (!token) {
     alert("로그인이 필요합니다!");
-    return redirect("/login");
+    return redirect("/");
   }
   return null;
 }
