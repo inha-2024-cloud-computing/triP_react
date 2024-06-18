@@ -11,26 +11,6 @@ import { getAuthToken } from "../util/auth";
 const Home = () => {
   const { backgroundVideo, handleImageSelect } = useOutletContext();
 
-  useEffect(() => {
-    const token = getAuthToken();
-
-    axios
-      .get("https://trip-ani.kro.kr/health-check", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then((response) => {
-        console.log("Health check successful:", response.data);
-      })
-      .catch((error) => {
-        console.error(
-          "There has been a problem with your axios operation:",
-          error
-        );
-      });
-  }, []);
-
   return (
     <div
       className="relative flex flex-col items-center justify-start bg-stone-200 text-purple-900"
